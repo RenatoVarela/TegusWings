@@ -1,23 +1,32 @@
-import React, { Suspense } from 'react';
-import ReactDOM from 'react-dom/client';
+import React ,{Suspense}from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import firebaseConfig from './firebase-config';
-import {
+import ScrollToTop from "./Mantenimiento/scrollUp"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router} from "react-router-dom";
+import{
   FirebaseAppProvider
-} from 'reactfire'
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <FirebaseAppProvider firebaseConfig={firebaseConfig}>
 
-    <Suspense fallback={'Conectando la app...'}>
+} from 'reactfire';
+
+ReactDOM.render(
+
+  <FirebaseAppProvider firebaseConfig={ firebaseConfig}>
+  <Suspense fallback={'Conectando la app...'}>
+
+  <React.StrictMode>
+   <Router>
+    <ScrollToTop/>
     <App />
-    </Suspense>
-</FirebaseAppProvider>
-    
-
-
+  
+    </Router> 
+  </React.StrictMode>
+  </Suspense>,
+  </FirebaseAppProvider>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
