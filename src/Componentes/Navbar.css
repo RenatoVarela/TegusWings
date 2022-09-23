@@ -1,6 +1,6 @@
 .navbar {
-    background-color: #13455e;
-    height: 75px;
+    background-color: #1e1e1f;
+    height: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,13 +64,13 @@
   
   .nav-item:hover:after {
     width: 100%;
-    background: #ffdd40;
+    background: #f51901;
   }
   
   
   .nav-item .active {
-    color: #ffdd40;
-    border: 1px solid #ffdd40;
+    color: #f51901;
+    border: 1px solid #f51901;
   }
   
   .nav-icon {
@@ -115,6 +115,6 @@
       transform: translate(-100%, 60%);
       font-size: 1.8rem;
       cursor: pointer;
-      color: #ffdd40;
+      color: #f51901;
     }
   }

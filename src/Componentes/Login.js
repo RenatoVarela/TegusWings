@@ -1,51 +1,49 @@
-import  React, {useState} from 'react';
+import React, { useState } from "react";
 
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
 import Singin from "./SingIn";
-import Grid from '@material-ui/core/Grid';
+import Grid from "@material-ui/core/Grid";
 
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 
 import { Link } from "react-router-dom";
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
-import { getDatabase, ref, onValue} from "firebase/database";
-import {useFirebaseApp} from 'reactfire';
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { getDatabase, ref, onValue } from "firebase/database";
+import { useFirebaseApp } from "reactfire";
 
-
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 import { useHistory } from "react-router-dom";
-
-
-
-
-
-
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    backgroundColor: "white",
+    padding: 100,
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -53,87 +51,74 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
-
 export default function Login(props) {
-  var contra = props.pass
+  var contra = props.pass;
   const firebase = useFirebaseApp();
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [openMessage, setOpenMessage] = React.useState(false);
   const [openMessage2, setOpenMessage2] = React.useState(false);
-  const [password2, setPassword2] = useState('');
+  const [password2, setPassword2] = useState("");
   const history = useHistory();
-  
+
   const [state, setState] = React.useState({
     checkedA: false,
   });
-  var contra="";
+  var contra = "";
   const [rol, setrol] = useState(false);
-  
-  const [inputValue, setInputValue] = React.useState('');
-const secretaria = async () =>{
-  const opcion="true"
 
-  let obj = { email, opcion };
- 
+  const [inputValue, setInputValue] = React.useState("");
+  const secretaria = async () => {
+    const opcion = "true";
 
-}
+    let obj = { email, opcion };
+  };
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
-  const getDatos2 = async () => {
-  
-};
-  const submit =()=>{
+  const getDatos2 = async () => {};
+  const submit = () => {
     getDatos2();
     const user2 = getAuth(firebase).currentUser;
     var email2 = user2.email;
     const auth = getAuth();
-    console.log("hola: "+email2);
-    
+    console.log("hola: " + email2);
+
     createUserWithEmailAndPassword(auth, email, password2)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    handleClickOpenMessage();
-    history.push("/");
-    // ...
-  })
-   .catch(function(error) {
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        handleClickOpenMessage();
+        history.push("/");
+        // ...
+      })
+      .catch(function (error) {
         handleClickOpenMessage2();
-   });
-  
- } 
- const handleClickOpenMessage = () => {
-  setOpenMessage(true);
-};
+      });
+  };
+  const handleClickOpenMessage = () => {
+    setOpenMessage(true);
+  };
 
-const handleCloseMessage = () => {
-  secretaria();
-  setOpenMessage(false);
-  
-  history.push("/Perfil");
-  //window.location.reload();
+  const handleCloseMessage = () => {
+    secretaria();
+    setOpenMessage(false);
 
-};
+    history.push("/Perfil");
+    //window.location.reload();
+  };
 
+  const handleClickOpenMessage2 = () => {
+    setOpenMessage2(true);
+  };
 
-const handleClickOpenMessage2 = () => {
-  setOpenMessage2(true);
-  
-};
-
-const handleCloseMessage2 = () => {
-  setOpenMessage2(false);
- // user2=null;
-};
+  const handleCloseMessage2 = () => {
+    setOpenMessage2(false);
+    // user2=null;
+  };
   const classes = useStyles();
 
-
-
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="md">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -168,37 +153,32 @@ const handleCloseMessage2 = () => {
               />
             </Grid>
             <div>
-      
-      <br />
-      
-    </div>
+              <br />
+            </div>
             <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Correo Electronico"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            onChange={(ev) => setEmail(ev.target.value)}
-          
-          />
-          <TextField 
-           
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Contraseña"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            onChange={(ev) => setPassword2(ev.target.value)}
-          />
-           
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Correo Electronico"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              onChange={(ev) => setEmail(ev.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Contraseña"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              onChange={(ev) => setPassword2(ev.target.value)}
+            />
           </Grid>
           <Button
             //type="submit"
@@ -211,37 +191,38 @@ const handleCloseMessage2 = () => {
             Registrarse
           </Button>
           <Dialog
-                  open={openMessage2}
-                  onClose={handleCloseMessage2}
-                  aria-labelledby="alert-dialog-title"
-                  aria-describedby="alert-dialog-description"
-                  >
-                <DialogTitle id="alert-dialog-title">{"¿Error en creación de cuenta nueva?"}</DialogTitle>
-                <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                  Intente de nuevo
-                </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                <Button onClick={handleCloseMessage2} color="primary">
+            open={openMessage2}
+            onClose={handleCloseMessage2}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"¿Error en creación de cuenta nueva?"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Intente de nuevo
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleCloseMessage2} color="primary">
                 Confirmacion
-                </Button>
-                
-              </DialogActions>
-            </Dialog>
-
-
+              </Button>
+            </DialogActions>
+          </Dialog>
 
           <Grid>
             <Grid item>
-              <Link to="/Perfil"  style={{ textDecoration: 'none' ,color:"Blue"}} >
+              <Link
+                to="/Perfil"
+                style={{ textDecoration: "none", color: "Blue" }}
+              >
                 Volver
               </Link>
             </Grid>
           </Grid>
         </form>
       </div>
-     
     </Container>
   );
 }

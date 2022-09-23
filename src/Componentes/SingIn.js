@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getAuth, signInWithEmailAndPassword  } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useFirebaseApp, useUser } from "reactfire";
 import ReactDOM from "react-dom";
 import Avatar from "@material-ui/core/Avatar";
@@ -31,6 +31,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    backgroundColor: "white",
+    padding: 100,
   },
   avatar: {
     margin: theme.spacing(1),
@@ -56,19 +58,16 @@ export default function SignIn() {
 
   const [openMessage, setOpenMessage] = React.useState(false);
   const [openMessage2, setOpenMessage2] = React.useState(false);
-  var flag2=false;
+  var flag2 = false;
   const history = useHistory();
-  
- 
-  const submit = async () =>{
+
+  const submit = async () => {
     pass = password;
     const auth = getAuth();
 
     signInWithEmailAndPassword(auth, email, password)
       .then(function (firebaseUser) {
         handleClickOpenMessage2();
-        
-        
 
         history.push("/");
 
@@ -99,7 +98,7 @@ export default function SignIn() {
   const classes = useStyles();
   return (
     <div>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="sm" bac>
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
