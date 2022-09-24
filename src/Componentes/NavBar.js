@@ -13,14 +13,29 @@ function NavBar(props) {
     <>
       <nav className="navbar">
         <div className="nav-container">
-
-          
           <NavLink style={{ color: "white" }} exact to="/" className="nav-logo">
-           <img src="https://i.ibb.co/TgFMgJk/Imagen2-removebg-preview.png" width="195px" ></img>
+            <img
+              src="https://i.ibb.co/TgFMgJk/Imagen2-removebg-preview.png"
+              width="195px"
+            ></img>
           </NavLink>
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
-            
+            <li className="nav-item">
+              <NavLink
+                style={{ color: "white" }}
+                exact
+                to={{
+                  pathname: "/CrearProducto",
+                  state: { valor: 0 },
+                }}
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                Servicios
+              </NavLink>
+            </li>
             <li className="nav-item">
               <BotonPerfil></BotonPerfil>
             </li>
@@ -31,7 +46,7 @@ function NavBar(props) {
           </div>
         </div>
       </nav>
-      </>
+    </>
   );
 }
 

@@ -8,6 +8,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import Paper from "@mui/material/Paper";
 
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -69,7 +70,6 @@ export default function CambioPass() {
    });
     }*/
   const submit2 = () => {
-    
     const auth = getAuth();
     const user = auth.currentUser;
     var contra = contraseñan;
@@ -77,7 +77,7 @@ export default function CambioPass() {
     if (contraseñan != confirmec) {
       handleClickOpenMessage2();
     } else {
-        updatePassword(user, contra)
+      updatePassword(user, contra)
         .then(function () {
           handleClickOpenMessage();
         })
@@ -110,115 +110,120 @@ export default function CambioPass() {
     <div>
       {user2 && (
         <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <div className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Cambio de Contraseña
-            </Typography>
-            <form className={classes.form} noValidate>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="contraseñaa"
-                label="Contraseña Actual"
-                type="password"
-                id="contraseñaa"
-                autoComplete="current-password"
-                onChange={(ev) => setContraseñaa(ev.target.value)}
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="contraseñan"
-                label="Contraseña Nueva"
-                type="password"
-                id="contraseñan"
-                autoComplete="current-password"
-                onChange={(ev) => setContraseñan(ev.target.value)}
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="confirmec"
-                label="Confirme Contraseña"
-                type="password"
-                id="confirmec"
-                autoComplete="current-password"
-                onChange={(ev) => setConfirmec(ev.target.value)}
-              />
-
-              <div>
-                <Button
-                  onClick={submit2}
+          <Paper
+            variant="outlined"
+            sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 6 } }}
+          >
+            <CssBaseline />
+            <div className={classes.paper}>
+              <Avatar className={classes.avatar}>
+                <LockOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Cambio de Contraseña
+              </Typography>
+              <form className={classes.form} noValidate>
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
                   fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                >
-                  Cambiar Contraseña
-                </Button>
-                <Dialog
-                  open={openMessage}
-                  onClose={handleCloseMessage}
-                  aria-labelledby="alert-dialog-title"
-                  aria-describedby="alert-dialog-description"
-                >
-                  <DialogTitle id="alert-dialog-title">
-                    {"Cambio de contraseña correcto"}
-                  </DialogTitle>
-                  <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                      Su cambio de contraseña fue exitoso
-                    </DialogContentText>
-                  </DialogContent>
-                  <DialogActions>
-                    <Button onClick={handleCloseMessage} color="primary">
-                      Confirmacion
-                    </Button>
-                  </DialogActions>
-                </Dialog>
-                <Dialog
-                  open={openMessage2}
-                  onClose={handleCloseMessage2}
-                  aria-labelledby="alert-dialog-title"
-                  aria-describedby="alert-dialog-description"
-                >
-                  <DialogTitle id="alert-dialog-title">{"Error"}</DialogTitle>
-                  <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                      Ingrese correctamente su contraseña actual y confirme
-                      correctamente su contraseña nueva
-                    </DialogContentText>
-                  </DialogContent>
-                  <DialogActions>
-                    <Button onClick={handleCloseMessage2} color="primary">
-                      Confirmacion
-                    </Button>
-                  </DialogActions>
-                </Dialog>
-              </div>
-              <Grid container justify="flex-end">
-                <Grid item>
-                  <Link
-                    to="/Perfil"
-                    style={{ textDecoration: "none", color: "Blue" }}
+                  name="contraseñaa"
+                  label="Contraseña Actual"
+                  type="password"
+                  id="contraseñaa"
+                  autoComplete="current-password"
+                  onChange={(ev) => setContraseñaa(ev.target.value)}
+                />
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="contraseñan"
+                  label="Contraseña Nueva"
+                  type="password"
+                  id="contraseñan"
+                  autoComplete="current-password"
+                  onChange={(ev) => setContraseñan(ev.target.value)}
+                />
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="confirmec"
+                  label="Confirme Contraseña"
+                  type="password"
+                  id="confirmec"
+                  autoComplete="current-password"
+                  onChange={(ev) => setConfirmec(ev.target.value)}
+                />
+
+                <div>
+                  <Button
+                    onClick={submit2}
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    className={classes.submit}
                   >
-                    Volver
-                  </Link>
+                    Cambiar Contraseña
+                  </Button>
+                  <Dialog
+                    open={openMessage}
+                    onClose={handleCloseMessage}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                  >
+                    <DialogTitle id="alert-dialog-title">
+                      {"Cambio de contraseña correcto"}
+                    </DialogTitle>
+                    <DialogContent>
+                      <DialogContentText id="alert-dialog-description">
+                        Su cambio de contraseña fue exitoso
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={handleCloseMessage} color="primary">
+                        Confirmacion
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
+                  <Dialog
+                    open={openMessage2}
+                    onClose={handleCloseMessage2}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                  >
+                    <DialogTitle id="alert-dialog-title">{"Error"}</DialogTitle>
+                    <DialogContent>
+                      <DialogContentText id="alert-dialog-description">
+                        Ingrese correctamente su contraseña actual y confirme
+                        correctamente su contraseña nueva
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={handleCloseMessage2} color="primary">
+                        Confirmacion
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
+                </div>
+                <Grid container justify="flex-end">
+                  <Grid item>
+                    <Link
+                      to="/Perfil"
+                      style={{ textDecoration: "none", color: "Blue" }}
+                    >
+                      Volver
+                    </Link>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </form>
-          </div>
-          <Box mt={8}></Box>
+              </form>
+            </div>
+            <Box mt={8}></Box>
+          </Paper>
         </Container>
       )}
     </div>

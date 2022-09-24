@@ -32,8 +32,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Courusel() {
-  const classes = useStyles();
-
   return (
     <Carousel fade className="carro">
       <Carousel.Item>
@@ -43,7 +41,6 @@ export default function Courusel() {
           alt="First slide"
           style={{ height: "550px" }}
         />
-
       </Carousel.Item>
       <Carousel.Item>
         <img
@@ -53,12 +50,13 @@ export default function Courusel() {
           style={{ height: "550px" }}
         />
         <div class="carousel-caption d-none d-md-block">
-        <h2 
-        style={{
-          color: "#060606"
-        }}
-        
-        ><strong>Tenes que probar LA TEGUS BACON CHEESE BURGER       <img src="https://html5-editor.net/tinymce/plugins/emoticons/img/smiley-tongue-out.gif" alt="tongue-out" width="30" height="30"  /></strong></h2>        
+          <h2
+            style={{
+              color: "#060606",
+            }}
+          >
+            <strong>Tenes que probar LA TEGUS BACON CHEESE BURGER 🤤 </strong>
+          </h2>
         </div>
       </Carousel.Item>
       <Carousel.Item>
@@ -80,3 +78,4 @@ export default function Courusel() {
     </Carousel>
   );
 }
+// <img src="https://html5-editor.net/tinymce/plugins/emoticons/img/smiley-tongue-out.gif" alt="tongue-out" width="30" height="30"  />

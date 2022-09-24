@@ -10,6 +10,7 @@ import Login from "./Componentes/Login";
 import ForgotPass from "./Componentes/ForgotPassword";
 import CambioPass from "./Componentes/CambioContraseña";
 import FooterPrueba from "./Componentes/footerPrueba";
+import CrearProducto from "./Componentes/crearProducto/crearProducto";
 import { useFirebaseApp } from "reactfire";
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
       style={{
         height: "100%",
         backgroundImage:
-          "url(https://i.ibb.co/2kMYcmH/ink-splash-duotone-stripe-background-1409-1379.jpg)"
+          "url(https://i.ibb.co/2kMYcmH/ink-splash-duotone-stripe-background-1409-1379.jpg)",
       }}
     >
       <NavBar> </NavBar>
@@ -33,6 +34,7 @@ function App() {
         <Route exact path="/Login" component={Login}></Route>
         <Route exact path="/ForgotPass" component={ForgotPass}></Route>
         <Route exact path="/CambioPass" component={CambioPass}></Route>
+        <Route exact path="/CrearProducto" component={CrearProducto}></Route>
       </Switch>
       <FooterPrueba className="footer"></FooterPrueba>
     </div>

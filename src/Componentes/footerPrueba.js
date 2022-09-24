@@ -42,7 +42,7 @@ export default function FooterPrueba() {
             <h1>Te Esperamos</h1>
             <br></br>
             <h4> ¡ALITAS, HAMBURGUESAS Y MÁS!</h4>
-            <h1> ¡Ven con Nosostros!   <img src="https://html5-editor.net/tinymce/plugins/emoticons/img/smiley-laughing.gif" alt="laughing" width="30" height="30" /></h1>
+            <h1> ¡Ven con Nosostros! 😃 </h1>
           </div>
           <div
             className="col-7 bg "
@@ -61,3 +61,5 @@ export default function FooterPrueba() {
     </React.Fragment>
   );
 }
+
+// <img src="https://html5-editor.net/tinymce/plugins/emoticons/img/smiley-laughing.gif" alt="laughing" width="30" height="30" />

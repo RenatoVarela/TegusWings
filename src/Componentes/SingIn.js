@@ -8,6 +8,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import Paper from "@mui/material/Paper";
 
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -27,12 +28,11 @@ import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(11),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: "white",
-    padding: 100,
+    padding: 10,
   },
   avatar: {
     margin: theme.spacing(1),
@@ -99,86 +99,91 @@ export default function SignIn() {
   return (
     <div>
       <Container component="main" maxWidth="sm" bac>
-        <CssBaseline />
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Iniciar Sesión
-          </Typography>
-          <form className={classes.form} noValidate>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Correo Electronico"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              onChange={(ev) => setEmail(ev.target.value)}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Contraseña"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={(ev) => setPassword(ev.target.value)}
-            />
-
-            <div>
-              <Button
-                onClick={submit}
+        <Paper
+          variant="outlined"
+          sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 6 } }}
+        >
+          <CssBaseline />
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Iniciar Sesión
+            </Typography>
+            <form className={classes.form} noValidate>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
                 fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                Iniciar sesion
-              </Button>
+                id="email"
+                label="Correo Electronico"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                onChange={(ev) => setEmail(ev.target.value)}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Contraseña"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={(ev) => setPassword(ev.target.value)}
+              />
 
-              <Dialog
-                open={openMessage}
-                onClose={handleCloseMessage}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-              >
-                <DialogTitle id="alert-dialog-title">
-                  {"¿Error Contraseña o correo incorrectos?"}
-                </DialogTitle>
-                <DialogContent>
-                  <DialogContentText id="alert-dialog-description">
-                    Revise su contraseña o su correo Electronico.
-                  </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={handleCloseMessage} color="primary">
-                    Confirmacion
-                  </Button>
-                </DialogActions>
-              </Dialog>
-            </div>
-
-            <Grid container>
-              <Grid item xs>
-                <Link
-                  to="/ForgotPass"
-                  style={{ textDecoration: "none", color: "Blue" }}
+              <div>
+                <Button
+                  onClick={submit}
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
                 >
-                  Perdiste tu contraseña?
-                </Link>
+                  Iniciar sesion
+                </Button>
+
+                <Dialog
+                  open={openMessage}
+                  onClose={handleCloseMessage}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <DialogTitle id="alert-dialog-title">
+                    {"¿Error Contraseña o correo incorrectos?"}
+                  </DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      Revise su contraseña o su correo Electronico.
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleCloseMessage} color="primary">
+                      Confirmacion
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+              </div>
+
+              <Grid container>
+                <Grid item xs>
+                  <Link
+                    to="/ForgotPass"
+                    style={{ textDecoration: "none", color: "Blue" }}
+                  >
+                    Perdiste tu contraseña?
+                  </Link>
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
-        </div>
-        <Box mt={8}></Box>
+            </form>
+          </div>
+          <Box mt={8}></Box>
+        </Paper>
       </Container>
     </div>
   );

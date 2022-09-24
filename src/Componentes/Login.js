@@ -6,6 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Singin from "./SingIn";
 import Grid from "@material-ui/core/Grid";
+import Paper from "@mui/material/Paper";
 
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
@@ -31,12 +32,10 @@ import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: "white",
-    padding: 100,
   },
   avatar: {
     margin: theme.spacing(1),
@@ -118,111 +117,116 @@ export default function Login(props) {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="md">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Registrarse
-        </Typography>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="Nombre"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Apellido"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
-            <div>
-              <br />
-            </div>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Correo Electronico"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              onChange={(ev) => setEmail(ev.target.value)}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Contraseña"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={(ev) => setPassword2(ev.target.value)}
-            />
-          </Grid>
-          <Button
-            //type="submit"
-            onClick={submit}
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
+    <Container component="main" maxWidth="sm">
+      <Paper
+        variant="outlined"
+        sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 6 } }}
+      >
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
             Registrarse
-          </Button>
-          <Dialog
-            open={openMessage2}
-            onClose={handleCloseMessage2}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle id="alert-dialog-title">
-              {"¿Error en creación de cuenta nueva?"}
-            </DialogTitle>
-            <DialogContent>
-              <DialogContentText id="alert-dialog-description">
-                Intente de nuevo
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleCloseMessage2} color="primary">
-                Confirmacion
-              </Button>
-            </DialogActions>
-          </Dialog>
-
-          <Grid>
-            <Grid item>
-              <Link
-                to="/Perfil"
-                style={{ textDecoration: "none", color: "Blue" }}
-              >
-                Volver
-              </Link>
+          </Typography>
+          <form className={classes.form} noValidate>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="fname"
+                  name="firstName"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="Nombre"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Apellido"
+                  name="lastName"
+                  autoComplete="lname"
+                />
+              </Grid>
+              <div>
+                <br />
+              </div>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Correo Electronico"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                onChange={(ev) => setEmail(ev.target.value)}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Contraseña"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={(ev) => setPassword2(ev.target.value)}
+              />
             </Grid>
-          </Grid>
-        </form>
-      </div>
+            <Button
+              //type="submit"
+              onClick={submit}
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Registrarse
+            </Button>
+            <Dialog
+              open={openMessage2}
+              onClose={handleCloseMessage2}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">
+                {"¿Error en creación de cuenta nueva?"}
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  Intente de nuevo
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleCloseMessage2} color="primary">
+                  Confirmacion
+                </Button>
+              </DialogActions>
+            </Dialog>
+
+            <Grid>
+              <Grid item>
+                <Link
+                  to="/Perfil"
+                  style={{ textDecoration: "none", color: "Blue" }}
+                >
+                  Volver
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
+      </Paper>
     </Container>
   );
 }
