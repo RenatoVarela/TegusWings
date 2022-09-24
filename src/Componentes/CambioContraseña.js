@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "firebase/auth";
+import { getAuth, updatePassword } from "firebase/auth";
 import { useFirebaseApp, useUser } from "reactfire";
 import ReactDOM from "react-dom";
 import Avatar from "@material-ui/core/Avatar";
@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    backgroundColor: "white",
   },
   avatar: {
     margin: theme.spacing(1),
@@ -48,7 +49,7 @@ export default function CambioPass() {
   const history = useHistory();
   const firebase = useFirebaseApp();
   //const user=null;
-  const user2 = firebase.auth().currentUser;
+  const user2 = getAuth(firebase).currentUser;
 
   const [contraseñaa, setContraseñaa] = useState("");
 
@@ -68,15 +69,15 @@ export default function CambioPass() {
    });
     }*/
   const submit2 = () => {
-    var user = firebase.auth().currentUser;
-
+    
+    const auth = getAuth();
+    const user = auth.currentUser;
     var contra = contraseñan;
 
     if (contraseñan != confirmec) {
       handleClickOpenMessage2();
     } else {
-      user2
-        .updatePassword(contra)
+        updatePassword(user, contra)
         .then(function () {
           handleClickOpenMessage();
         })

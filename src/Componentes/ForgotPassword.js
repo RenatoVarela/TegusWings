@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor: "white",
   },
   avatar: {
     margin: theme.spacing(1),
@@ -191,9 +192,7 @@ export default function ForgotPass() {
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-      
-      </Box>
+      <Box mt={8}></Box>
     </Container>
   );
 }

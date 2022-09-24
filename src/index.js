@@ -24,7 +24,7 @@ ReactDOM.render(
   
     </Router> 
   </React.StrictMode>
-  </Suspense>,
+  </Suspense>
   </FirebaseAppProvider>,
   document.getElementById('root')
 );

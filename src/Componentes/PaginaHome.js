@@ -16,18 +16,18 @@ export default function PaginaHome() {
             className="d-block"
             src="https://i.ibb.co/R3N9sKV/zyro-image-1.jpg"
             alt="First slide"
-            style={{ width: "80%", height: "60%", marginLeft: "17%" }}
+            style={{ width: "80%", height: "60%", marginLeft: "21%" }}
           />
         </Grid>
         <Grid item xs={6} sm={6}>
           <img
             src="https://i.ibb.co/xzjfgdY/Whats-App-Image-2022-09-22-at-3-32-10-PM.jpg"
-            style={{ width: "80%", height: "60%", marginLeft: "3%" }}
+            style={{ width: "80%", height: "60%", marginLeft: "8%" }}
           ></img>
           <br />
           <br />
           <Grid item xs={6} sm={12}>
-            <h1 className="centrar">Menúss</h1>
+            <h1 className="centrar">Menús</h1>
           </Grid>
         </Grid>
 

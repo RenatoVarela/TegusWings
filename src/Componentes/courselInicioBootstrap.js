@@ -43,6 +43,7 @@ export default function Courusel() {
           alt="First slide"
           style={{ height: "550px" }}
         />
+
       </Carousel.Item>
       <Carousel.Item>
         <img
@@ -51,11 +52,28 @@ export default function Courusel() {
           alt="First slide"
           style={{ height: "550px" }}
         />
+        <div class="carousel-caption d-none d-md-block">
+        <h2 
+        style={{
+          color: "#060606"
+        }}
+        
+        ><strong>Tenes que probar LA TEGUS BACON CHEESE BURGER 
+        <img src="https://html5-editor.net/tinymce/plugins/emoticons/img/smiley-tongue-out.gif" alt="tongue-out" /></strong></h2>        
+        </div>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://i.ibb.co/yXSX8Lw/Whats-App-Image-2022-09-22-at-3-32-10-PM-1.jpg"
+          src="https://i.ibb.co/d0TFW8C/alitas.jpg"
+          alt="Third slide"
+          style={{ height: "550px" }}
+        />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://i.ibb.co/BCh801W/pasta.jpg"
           alt="Third slide"
           style={{ height: "550px" }}
         />
