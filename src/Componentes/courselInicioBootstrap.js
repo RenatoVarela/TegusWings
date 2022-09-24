@@ -58,8 +58,7 @@ export default function Courusel() {
           color: "#060606"
         }}
         
-        ><strong>Tenes que probar LA TEGUS BACON CHEESE BURGER 
-        <img src="https://html5-editor.net/tinymce/plugins/emoticons/img/smiley-tongue-out.gif" alt="tongue-out" /></strong></h2>        
+        ><strong>Tenes que probar LA TEGUS BACON CHEESE BURGER       <img src="https://html5-editor.net/tinymce/plugins/emoticons/img/smiley-tongue-out.gif" alt="tongue-out" width="30" height="30"  /></strong></h2>        
         </div>
       </Carousel.Item>
       <Carousel.Item>

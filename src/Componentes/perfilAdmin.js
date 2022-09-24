@@ -27,11 +27,12 @@ import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-      marginTop: theme.spacing(11),
+      marginTop: theme.spacing(5),
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       backgroundColor: "white",
+      padding: 100,
     },
     avatar: {
       margin: theme.spacing(1),
@@ -92,7 +93,7 @@ export default function PerfilAdmin() {
             <Container component="main" maxWidth="xs">
               
                 <CssBaseline />
-                <div className={classes.paper}>
+                <div className={classes.paper} style={{width:500}}>
                   <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                   </Avatar>
