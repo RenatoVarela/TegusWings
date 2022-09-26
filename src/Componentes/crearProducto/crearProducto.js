@@ -11,7 +11,7 @@ import Select from "@material-ui/core/Select";
 import Paper from "@mui/material/Paper";
 import { useEffect } from "react";
 import ReactFirebaseFileUpload from "./reactfirebasefileupload";
-//import firebase from "firebase";
+import firebase from "firebase";
 import firebaseConfig from "../../firebase-config";
 import "firebase/firestore";
 import Dialog from "@material-ui/core/Dialog";
@@ -21,10 +21,10 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
-// if (!firebase.apps.length) {
-//   firebase.initializeApp(firebaseConfig);
-// }
-// const db = firebase.firestore();
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+ }
+const db = firebase.firestore();
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -64,12 +64,10 @@ export default function CrearProducto() {
   const classes = useStyles();
   let history = useHistory();
 
-  const [imgService, setimgService] = React.useState("");
+  const [imgProducto, setimgService] = React.useState("");
   const [open, setOpen] = React.useState(false);
   const [nombreProducto, setNombreProducto] = React.useState("");
   const [descripcion, setDescripcion] = React.useState("");
-  const [categoria1, setCategoria1] = React.useState("None");
-  const [categorias, setCategorias] = React.useState([]);
   const [error1, setError1] = React.useState(false);
   const [error2, setError2] = React.useState(false);
   const [error3, setError3] = React.useState(false);
@@ -92,70 +90,55 @@ export default function CrearProducto() {
   //     });
   //     setCategorias(list);
   //   };
-  const guardarProducto = async () => {};
-  //   const guardarProducto = async () => {
-  //     const pasa = descripcion.match(
-  //       /^[a-zA-ZÀ-ÿ\u00f1\u00d1_ ]+[a-zA-ZÀ-ÿ\u00f1\u00d1_ \s 0-9 , .]*$/
-  //     );
-  //     const pasaNombre = nombreProducto.match(/^[a-zA-ZÀ-ÿ\u00f1\u00d1_ ]*$/);
-  //     const pasaNombre2 = nombreProducto.match(/^(\w+\s?)*\s*$/);
-  //     if (imgService == "") {
-  //       setError3(true);
-  //     } else {
-  //       setError3(false);
-  //     }
-  //     if (nombreProducto === "" || !pasaNombre || !pasaNombre2) {
-  //       setError1(true);
-  //       if (nombreProducto === "") {
-  //         setErrorName("Nombre obligatorio");
-  //       } else {
-  //         setErrorName("Nombre con caracteres erroneos");
-  //       }
-  //     } else {
-  //       setError1(false);
-  //       setErrorName("Nombre Producto");
-  //     }
-  //     if (descripcion === "" || !pasa) {
-  //       setError2(true);
-  //       if (descripcion === "") {
-  //         setErrorDescripcion("Descripcion obligatoria");
-  //       } else {
-  //         setErrorDescripcion("Descripcion con carateres erroneos");
-  //       }
-  //     } else {
-  //       setError2(false);
-  //       setErrorDescripcion("Descripcion Producto");
-  //     }
-  //     if (categoria1 === "None") {
-  //       setError4(true);
-  //     } else {
-  //       setError4(false);
-  //     }
-  //     handleCloseMessage();
-  //     let categoria;
-  //     if (
-  //       imgService !== "" &&
-  //       nombreProducto !== "" &&
-  //       descripcion !== "" &&
-  //       pasa &&
-  //       pasaNombre &&
-  //       pasaNombre2 &&
-  //       categoria1 !== "None"
-  //     ) {
-  //       categorias.forEach((doc) => {
-  //         if (categoria1 === doc.Nombre) {
-  //           categoria = doc.id;
-  //         }
-  //       });
-  //       const obj = { categoria, descripcion, imgService, nombreProducto };
-  //       await db.collection("Productos").add(obj);
-  //       history.push({ pathname: "/Productos", state: { valor: 0 } });
-  //     }
-  //   };
+  const guardarProducto = async () => {
+    const pasa= descripcion.match(/^[a-zA-ZÀ-ÿ\u00f1\u00d1_ ]+[a-zA-ZÀ-ÿ\u00f1\u00d1_ \s 0-9 , .]*$/);
+    const pasaNombre= nombreProducto.match(/^[a-zA-ZÀ-ÿ\u00f1\u00d1_ ]*$/);
+    const pasaNombre2 = nombreProducto.match(/^(\w+\s?)*\s*$/);
+   if(imgProducto==""){
+     setError3(true);
+   } else {
+     setError3(false);
+   }
+   if (nombreProducto === "" || !pasaNombre || !pasaNombre2) {
+     setError1(true);
+     if (nombreProducto === "") {
+       setErrorName("Nombre obligatorio");
+     } else {
+       setErrorName("Nombre con caracteres erroneos");
+     }
+   } else {
+     setError1(false);
+     setErrorName("Nombre Servicio");
+   }
+   if (descripcion === "" || !pasa) {
+     setError2(true);
+     if (descripcion === "") {
+       setErrorDescripcion("Descripcion obligatoria");
+     } else {
+       setErrorDescripcion("Descripcion con carateres erroneos");
+     }
+   } else {
+     setError2(false);
+     setErrorDescripcion("Descripcion Servicio");
+   }
+   handleCloseMessage();
+   if (
+    imgProducto !== "" &&
+     nombreProducto !== "" &&
+     descripcion !== "" &&
+     pasa &&
+     pasaNombre &&
+     pasaNombre2
+   ) {
+     const obj = { descripcion, imgProducto, nombreProducto };
+     await db.collection("Productos").add(obj);
+     history.push({ pathname: "/", state: { valor: 0 } });
+   }
+ };
 
   const regresaraction = async () => {
     handleCloseMessage2();
-    history.push("/Productos");
+    history.push("/");
   };
 
   const handleClose = () => {
@@ -218,7 +201,7 @@ export default function CrearProducto() {
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <img src={imgService} width="10%"></img>
+              <img src={imgProducto} width="10%"></img>
             </Grid>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={12}>
