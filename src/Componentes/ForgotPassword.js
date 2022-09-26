@@ -15,7 +15,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Login from "./Login";
 import ForgotPassword from "./ForgotPassword";
-import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import 'firebase/auth';
 import { Link } from "react-router-dom";
 import { useFirebaseApp } from "reactfire";
 
@@ -55,17 +55,15 @@ export default function ForgotPass() {
   const firebase = useFirebaseApp();
   const history = useHistory();
 
-  const auth = getAuth();
+  var auth = firebase.auth();
 
   const PasswordRecover = () => {
-    sendPasswordResetEmail(auth, email)
-      .then(function () {
-        // Email sent.
-        handleClickOpenMessage();
-      })
-      .catch(function (error) {
-        handleClickOpenMessage2();
-      });
+    auth.sendPasswordResetEmail(email).then(function() {
+      // Email sent.
+      handleClickOpenMessage();
+    }).catch(function(error) {
+      // An error happened.
+    });
   };
   const handleClickOpenMessage = () => {
     setOpenMessage(true);

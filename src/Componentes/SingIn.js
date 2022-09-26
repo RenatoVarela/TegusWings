@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import "firebase/auth";
 import { useFirebaseApp, useUser } from "reactfire";
 import ReactDOM from "react-dom";
 import Avatar from "@material-ui/core/Avatar";
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const firebase = useFirebaseApp();
   const user = null;
-  const user2 = getAuth(firebase).currentUser;
+  const user2 = firebase.auth().currentUser;
   var pass;
   const [email, setEmail] = useState("");
 
@@ -63,11 +63,12 @@ export default function SignIn() {
 
   const submit = async () => {
     pass = password;
-    const auth = getAuth();
-
-    signInWithEmailAndPassword(auth, email, password)
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
       .then(function (firebaseUser) {
         handleClickOpenMessage2();
+        
 
         history.push("/");
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useFirebaseApp, useUser } from "reactfire";
-import { getAuth } from "firebase/auth";
+import "firebase/auth";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import { withRouter } from "react-router-dom";
@@ -32,7 +32,7 @@ const BotonPerfil = (props) => {
   const classes = useStyles();
   const firebase = useFirebaseApp();
   const history = useHistory();
-  const admin = getAuth(firebase).currentUser;
+  const admin = firebase.auth().currentUser;
 
   
 

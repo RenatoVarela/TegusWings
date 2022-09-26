@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { render } from "react-dom";
-//import { storage } from "../firebase";
+import { storage } from "../../firebase";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { Fab } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
@@ -15,11 +15,11 @@ const ReactFirebaseFileUpload = (props) => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
   const [progress, setProgress] = useState(0);
-  // useEffect(() => {
-  //   if (image) {
-  //     handleUpload();
-  //   }
-  // }, [image]);
+  useEffect(() => {
+    if (image) {
+      handleUpload();
+    }
+  }, [image]);
   const handleChange = (e) => {
     if (e.target.files[0]) {
       if (
@@ -43,35 +43,35 @@ const ReactFirebaseFileUpload = (props) => {
     setCamError(false);
   };
 
-  // const handleUpload = () => {
-  //   const uploadTask = storage.ref(`images/${image.name}`).put(image);
-  //   uploadTask.on(
-  //     "state_changed",
-  //     (snapshot) => {
-  //       const progress = Math.round(
-  //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-  //       );
-  //       setProgress(progress);
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     },
-  //     () => {
-  //       storage
-  //         .ref("images")
-  //         .child(image.name)
-  //         .getDownloadURL()
-  //         .then((url) => {
-  //           setUrl(url);
-  //           props.setProfileUrl(url);
-  //         });
-  //     }
-  //   );
-  //   handleMessageErrorCamara();
-  //   setTimeout(() => {
-  //     handleCloseErrorMessageCamera();
-  //   }, 3000);
-  // };
+  const handleUpload = () => {
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgress(progress);
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then((url) => {
+            setUrl(url);
+            props.setProfileUrl(url);
+          });
+      }
+    );
+    handleMessageErrorCamara();
+    setTimeout(() => {
+      handleCloseErrorMessageCamera();
+    }, 3000);
+  };
 
   return (
     <Grid container spacing={3}>

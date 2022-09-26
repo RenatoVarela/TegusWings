@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getAuth } from "firebase/auth";
+import 'firebase/auth';
 import { useFirebaseApp, useUser } from "reactfire";
 import ReactDOM from "react-dom";
 import Avatar from "@material-ui/core/Avatar";
@@ -47,17 +47,16 @@ const useStyles = makeStyles((theme) => ({
 export default function PerfilAdmin() {
   const classes = useStyles();
   const firebase = useFirebaseApp();
-  var user2 = getAuth(firebase).currentUser;
+  var user2 =firebase.auth().currentUser;
 
   const history = useHistory();
 
   const submit2 = () => {
-    const auth = getAuth();
-
-    auth.signOut().then(function (firebaseUser) {
+    firebase.auth().signOut().then(function(firebaseUser) {
       history.push("/");
-      window.location.reload();
-    });
+     window.location.reload();
+      
+  });
   };
   const submit3 = () => {
     if (user2.email !== null) {

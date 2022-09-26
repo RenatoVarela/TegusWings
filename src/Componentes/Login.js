@@ -15,11 +15,7 @@ import Container from "@material-ui/core/Container";
 
 import { Link } from "react-router-dom";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import 'firebase/auth';
 import { getDatabase, ref, onValue } from "firebase/database";
 import { useFirebaseApp } from "reactfire";
 
@@ -77,15 +73,12 @@ export default function Login(props) {
   const getDatos2 = async () => {};
   const submit = () => {
     getDatos2();
-    const user2 = getAuth(firebase).currentUser;
+    const user2 = firebase.auth().currentUser;
     var email2 = user2.email;
-    const auth = getAuth();
-    console.log("hola: " + email2);
 
-    createUserWithEmailAndPassword(auth, email, password2)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
+    firebase.auth().createUserWithEmailAndPassword(email,password2).then(function(firebaseUser) {
+      firebase.auth().signInWithEmailAndPassword(email2, contra)
+        handleClickOpenMessage();
         handleClickOpenMessage();
         history.push("/");
         // ...
