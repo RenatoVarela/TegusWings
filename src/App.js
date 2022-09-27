@@ -11,6 +11,7 @@ import ForgotPass from "./Componentes/ForgotPassword";
 import CambioPass from "./Componentes/CambioContraseña";
 import FooterPrueba from "./Componentes/footerPrueba";
 import CrearProducto from "./Componentes/crearProducto/crearProducto";
+import Menu from "./menu/menu";
 import { useFirebaseApp } from "reactfire";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route exact path="/ForgotPass" component={ForgotPass}></Route>
         <Route exact path="/CambioPass" component={CambioPass}></Route>
         <Route exact path="/CrearProducto" component={CrearProducto}></Route>
+        <Route exact path="/Menu" component={Menu}></Route>
       </Switch>
       <FooterPrueba className="footer"></FooterPrueba>
     </div>

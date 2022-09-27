@@ -26,14 +26,14 @@ function NavBar(props) {
                 style={{ color: "white" }}
                 exact
                 to={{
-                  pathname: "/CrearProducto",
+                  pathname: "/Menu",
                   state: { valor: 0 },
                 }}
                 activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
               >
-                Servicios
+                Menu
               </NavLink>
             </li>
             <li className="nav-item">
