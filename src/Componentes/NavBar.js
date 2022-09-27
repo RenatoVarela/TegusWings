@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
+import BotonPerfil from "../Componentes/botonPerfil";
 import { useFirebaseApp, useUser } from "reactfire";
 import "firebase/auth";
-import BotonPerfil from "../Componentes/botonPerfil";
 
 function NavBar(props) {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
+  const firebase = useFirebaseApp();
+  const admin = firebase.auth().currentUser;
 
   return (
     <>

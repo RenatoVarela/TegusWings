@@ -1,6 +1,7 @@
 import Courusel from "../Componentes/courselInicioBootstrap";
 import Grid from "@material-ui/core/Grid";
 import Container from "@mui/material/Container";
+import ProductoGrid from "../Componentes/ProductoGrid";
 
 export default function PaginaHome() {
   return (
@@ -26,8 +27,12 @@ export default function PaginaHome() {
           ></img>
           <br />
           <br />
-          <Grid item xs={6} sm={12}>
+          <Grid style={{ marginLeft: 10}}>
             <h1 className="centrar">Menús</h1>
+
+            < ProductoGrid
+            style={{ marginLeft: "30%"}}
+            ></ ProductoGrid>
           </Grid>
         </Grid>
 

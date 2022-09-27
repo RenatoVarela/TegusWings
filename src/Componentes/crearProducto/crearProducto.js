@@ -132,13 +132,13 @@ export default function CrearProducto() {
    ) {
      const obj = { descripcion, imgProducto, nombreProducto };
      await db.collection("Productos").add(obj);
-     history.push({ pathname: "/", state: { valor: 0 } });
+     history.push({ pathname: "/Menu", state: { valor: 0 } });
    }
  };
 
   const regresaraction = async () => {
     handleCloseMessage2();
-    history.push("/");
+    history.push("/Menu");
   };
 
   const handleClose = () => {
@@ -301,7 +301,7 @@ export default function CrearProducto() {
               </DialogTitle>
               <DialogContent>
                 <DialogContentText id="alert-dialog-description">
-                  Una vez Confirmando estos datos se perderan
+                  Una vez Confirmando estos datos se perderán
                 </DialogContentText>
               </DialogContent>
               <DialogActions>

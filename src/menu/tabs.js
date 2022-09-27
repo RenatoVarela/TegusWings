@@ -122,7 +122,7 @@ export default function FullWidthTabs(props) {
               <Card key={`cards-${index}`} className={classes.root1}>
                 <CardActionArea
                   onClick={() =>
-                    history.push("/DetalleServicio/" + servicioo.id)
+                    history.push("/DetalleProducto/" + servicioo.id)
                   }
                 >
                   <CardMedia
@@ -140,7 +140,7 @@ export default function FullWidthTabs(props) {
                 <CardActions className={classes.bottom}>
                   {flag && (
                     <Button size="small" color="primary">
-                      <Link to={"/Servicio/" + servicioo.id}>Editar</Link>
+                      <Link to={"/EditarProducto/" + servicioo.id}>Editar</Link>
                     </Button>
                   )}
                   {/* {flag && (
