@@ -77,7 +77,7 @@ export default function Menu() {
     <div className={classes.container}>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={4}>
-          <h1>Menu</h1>
+          <h1>Menú</h1>
         </Grid>
         <Grid item xs={12} sm={4}>
           {flag && (

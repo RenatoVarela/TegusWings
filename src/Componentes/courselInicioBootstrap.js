@@ -37,8 +37,16 @@ export default function Courusel() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://i.ibb.co/Npm7gCM/Whats-App-Image-2022-09-22-at-3-32-11-PM.jpg"
+          src="https://i.ibb.co/85zTmJz/Whats-App-Image-2022-09-24-at-12-55-15-PM.jpg"
           alt="First slide"
+          style={{ height: "550px" }}
+        />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://i.ibb.co/wLYJX03/Whats-App-Image-2022-09-24-at-12-55-16-PM.jpg"
+          alt="Third slide"
           style={{ height: "550px" }}
         />
       </Carousel.Item>
@@ -63,14 +71,6 @@ export default function Courusel() {
         <img
           className="d-block w-100"
           src="https://i.ibb.co/d0TFW8C/alitas.jpg"
-          alt="Third slide"
-          style={{ height: "550px" }}
-        />
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://i.ibb.co/BCh801W/pasta.jpg"
           alt="Third slide"
           style={{ height: "550px" }}
         />

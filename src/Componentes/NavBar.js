@@ -35,7 +35,7 @@ function NavBar(props) {
                 className="nav-links"
                 onClick={handleClick}
               >
-                Menu
+                Menú
               </NavLink>
             </li>
             <li className="nav-item">
