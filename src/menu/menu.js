@@ -82,7 +82,7 @@ export default function Menu() {
         <Grid item xs={12} sm={4}>
           {flag && (
             <Button
-              style={{ marginTop: "2%", marginLeft: '20%' }}
+              style={{ marginTop: "2%", marginLeft: "20%" }}
               variant="contained"
               color="primary"
               // onClick={handleClickOpenMessage}
@@ -97,7 +97,7 @@ export default function Menu() {
       <FullWidthTabs
         value={valor}
         setValue={setValor}
-        // eliminar={eliminarServicio}
+        eliminar={eliminarServicio}
         servicios={servicio}
         // refresh={getCategorias}
         setService={setServicio}

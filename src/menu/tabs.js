@@ -10,7 +10,7 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-// import BotonEliminarServicio from "../Mantenimiento/botonEliminarServicio";
+import BotonEliminarServicio from "./botonEliminarProducto";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -143,14 +143,14 @@ export default function FullWidthTabs(props) {
                       <Link to={"/EditarProducto/" + servicioo.id}>Editar</Link>
                     </Button>
                   )}
-                  {/* {flag && (
-                          <BotonEliminarServicio
-                            id={servicioo.id}
-                            funcEliminar={props.eliminar}
-                            changedata={props.setService}
-                            data={props.servicios}
-                          ></BotonEliminarServicio>
-                        )} */}
+                  {flag && (
+                    <BotonEliminarServicio
+                      id={servicioo.id}
+                      funcEliminar={props.eliminar}
+                      changedata={props.setService}
+                      data={props.servicios}
+                    ></BotonEliminarServicio>
+                  )}
                 </CardActions>
               </Card>
             </Grid>

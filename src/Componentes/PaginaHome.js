@@ -25,16 +25,15 @@ export default function PaginaHome() {
             src="https://i.ibb.co/xzjfgdY/Whats-App-Image-2022-09-22-at-3-32-10-PM.jpg"
             style={{ width: "80%", height: "60%", marginLeft: "8%" }}
           ></img>
-          <br />
-          <br />
-          <Grid style={{ marginLeft: 10}}>
-            <h1 className="centrar">Menús</h1>
-
-            < ProductoGrid
-            style={{ marginLeft: "30%"}}
-            ></ ProductoGrid>
-          </Grid>
         </Grid>
+
+        <div>
+          <Grid item xs={6} sm={10} style={{ marginLeft: "9%" }}>
+            <h1 style={{ textAlign: "center" }}>Menús</h1>
+
+            <ProductoGrid></ProductoGrid>
+          </Grid>
+        </div>
 
         <br></br>
       </Grid>
