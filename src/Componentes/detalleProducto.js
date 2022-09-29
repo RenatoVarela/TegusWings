@@ -54,6 +54,9 @@ export default function DetalleProducto(props) {
                   width="100%"
                   style={{ marginTop: 5 }}
                 ></img>
+                <Typography gutterBottom variant="h6" component="h2" style={{ textAlign: "left", color:"red" }}>
+                      {"PRECIO:  LPS. " +detalle.precio+".00"}
+                    </Typography>
               </Grid>
               <Grid item xs={12} sm={8}>
                 <Typography

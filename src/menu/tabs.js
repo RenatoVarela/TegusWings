@@ -134,6 +134,9 @@ export default function FullWidthTabs(props) {
                     <Typography gutterBottom variant="h5" component="h2">
                       {servicioo.nombreProducto}
                     </Typography>
+                    <Typography gutterBottom variant="h6" component="h2" style={{ textAlign: "right", color:"red" }}>
+                      {"LPS. " +servicioo.precio+".00"}
+                    </Typography>
                   </CardContent>
                 </CardActionArea>
 

@@ -72,6 +72,7 @@ export default function CrearProducto() {
   const [error2, setError2] = React.useState(false);
   const [error3, setError3] = React.useState(false);
   const [error4, setError4] = React.useState(false);
+  const [precio, setAlerta2] = React.useState(0);
   const [errorName, setErrorName] = React.useState("Nombre Producto");
   const [errorDescripcion, setErrorDescripcion] = React.useState(
     "Descripcion Producto"
@@ -123,14 +124,14 @@ export default function CrearProducto() {
    }
    handleCloseMessage();
    if (
-    imgProducto !== "" &&
+    imgProducto !== "" && precio !== "" &&
      nombreProducto !== "" &&
      descripcion !== "" &&
      pasa &&
      pasaNombre &&
      pasaNombre2
    ) {
-     const obj = { descripcion, imgProducto, nombreProducto };
+     const obj = { descripcion, imgProducto, nombreProducto, precio };
      await db.collection("Productos").add(obj);
      history.push({ pathname: "/Menu", state: { valor: 0 } });
    }
@@ -172,6 +173,11 @@ export default function CrearProducto() {
   const handleDescripcion = (e) => {
     if (e.target.value.length < 420 && e.target.value !== " ") {
       setDescripcion(e.target.value);
+    }
+  };
+  const handleAlerta1 = (e) => {
+    if (e.target.value > 0 && e.target.value !== null && e.target.value < 2000) {
+      setAlerta2(parseInt(e.target.value));
     }
   };
   const handleNombre = (e) => {
@@ -239,15 +245,20 @@ export default function CrearProducto() {
                 />
               </Grid>
 
-              <Grid item xs={12} sm={12}>
-                <Typography
-                  variant="body2"
-                  gutterBottom
-                  style={error4 ? { color: "red" } : { display: "none" }}
-                >
-                  *Categoria no seleccionada
-                </Typography>
-              </Grid>
+              <Grid item xs={12} sm={4}>
+          <TextField
+            style={{ marginTop: "3%" }}
+            required
+            id="alerta"
+            name="alerta"
+            label="Precio"
+            type="number"
+            fullWidth
+            autoComplete="given-name"
+            onChange={(e) => handleAlerta1(e)}
+            value={precio}
+          />
+        </Grid>
             </Grid>
 
             <Button

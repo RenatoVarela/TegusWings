@@ -71,7 +71,7 @@ export default function ModificarProducto(props) {
   const [open, setOpen] = React.useState(false);
   const [nombreProducto, setNombreProducto] = React.useState("");
   const [descripcion, setDescripcion] = React.useState("");
-
+  const [precio, setAlerta2] = React.useState(0);
   const [categoria1, setCategoria1] = React.useState("");
   const [id, setId] = React.useState("");
   const [categorias, setCategorias] = React.useState([]);
@@ -124,6 +124,7 @@ export default function ModificarProducto(props) {
 
     setimgProducto(objf.imgProducto);
     setDescripcion(objf.descripcion);
+    setAlerta2(objf.precio);
   };
 
   const guardarProducto = async () => {
@@ -163,7 +164,7 @@ export default function ModificarProducto(props) {
           categoria = doc.id;
         }
       });
-      let obj = { descripcion, imgProducto, nombreProducto };
+      let obj = { descripcion, imgProducto, nombreProducto, precio };
       db.collection("Productos").doc(id).set(obj);
       history.push({ pathname: "/Menu", state: { valor: 0 } });
     }
@@ -183,6 +184,11 @@ export default function ModificarProducto(props) {
   const handleDescripcion = (e) => {
     if (e.target.value.length < 420 && e.target.value !== " ") {
       setDescripcion(e.target.value);
+    }
+  };
+  const handleAlerta1 = (e) => {
+    if (e.target.value > 0 && e.target.value !== null && e.target.value < 2000) {
+      setAlerta2(parseInt(e.target.value));
     }
   };
   const handleNombre = (e) => {
@@ -242,7 +248,20 @@ export default function ModificarProducto(props) {
               rows={4}
             />
           </Grid>
-
+          <Grid item xs={12} sm={4}>
+          <TextField
+            style={{ marginTop: "3%" }}
+            required
+            id="alerta"
+            name="alerta"
+            label="Precio"
+            type="number"
+            fullWidth
+            autoComplete="given-name"
+            onChange={(e) => handleAlerta1(e)}
+            value={precio}
+          />
+        </Grid>
         
         </Grid>
 
